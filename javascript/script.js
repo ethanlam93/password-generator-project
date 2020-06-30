@@ -47,7 +47,7 @@ function generatePassword(){
   }
 }
 
-// Pasword generator function
+// Password generator function
 function randomPass(){
   // confirm if user want lowercase, uppercase, number or special characters in their password
   var isLower = confirm("Do you want lower case in your password?");
@@ -57,6 +57,10 @@ function randomPass(){
   // if function based on the answer of user
   if (isLower === true && isUpper === true && isNumber === true && isSpecial === true){
     allTrue()
+  }
+  else if(isLower === false && isUpper === false && isNumber === false && isSpecial === false){
+    alert("Please choose at least one criteria! I forgive you this time");
+    randomPass()
   }
   else if(isLower === true && isUpper === true && isNumber === true){
     LUN()
