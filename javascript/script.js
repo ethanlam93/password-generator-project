@@ -60,6 +60,10 @@ function randomPass(){
   if (isLower === true && isUpper === true && isNumber === true && isSpecial === true){
     allTrue()
   }
+  else if(isLower === false && isUpper === false && isNumber === false && isSpecial === false){
+    alert("Please choose AT LEAST 1 criteria for your password");
+    randomPass()
+  }
   else if(isLower === true && isUpper === true && isNumber === true){
     LUN()
   }
