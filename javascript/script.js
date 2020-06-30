@@ -69,40 +69,40 @@ function randomPass(){
     for( var i = 0; i < characterCountInNumber;){
     //if all four criteria are true
     if(isLower && i < characterCountInNumber){ 
-    myPassword.push(lower[Math.floor(Math.random()*lower.length)]);
+    myPassword.push(lower[Math.floor(Math.random()*(lower.length + 1))]);
     i++;
     if (isUpper && i < characterCountInNumber){
-    myPassword.push(upper[Math.floor(Math.random()*upper.length)]);
+    myPassword.push(upper[Math.floor(Math.random()*(upper.length + 1))]);
     i++};
     if (isNumber && i < characterCountInNumber){
-    myPassword.push(num[Math.floor(Math.random()*num.length)]);
+    myPassword.push(num[Math.floor(Math.random()*(num.length +1))]);
     i++};
     if (isSpecial && i < characterCountInNumber){
-    myPassword.push(special[Math.floor(Math.random()*special.length)]);
+    myPassword.push(special[Math.floor(Math.random()*(special.length +1))]);
     i++};
     }
     //if the 1 criteria are false, check the other three
     else if (isUpper && i < characterCountInNumber){
-    myPassword.push(upper[Math.floor(Math.random()*upper.length)]);
+    myPassword.push(upper[Math.floor(Math.random()*(upper.length + 1))]);
     i++;
     if (isNumber && i < characterCountInNumber){
-    myPassword.push(num[Math.floor(Math.random()*num.length)]);
+    myPassword.push(num[Math.floor(Math.random()*(num.length+1))]);
     i++};
     if (isSpecial && i < characterCountInNumber){
-    myPassword.push(special[Math.floor(Math.random()*special.length)]);
+    myPassword.push(special[Math.floor(Math.random()*(special.length + 1))]);
     i++}
     }
     //if the first two criteria are false, check the last two criteria
     else if (isNumber && i < characterCountInNumber){
-    myPassword.push(num[Math.floor(Math.random()*num.length)]);
+    myPassword.push(num[Math.floor(Math.random()*(num.length + 1))]);
     i++;
     if (isSpecial && i < characterCountInNumber){
-    myPassword.push(special[Math.floor(Math.random()*special.length)]);
+    myPassword.push(special[Math.floor(Math.random()*(special.length + 1))]);
     i++}
     }
     //if the first three criteria are false, then only the last one is true
     else if (isSpecial && i < characterCountInNumber){
-    myPassword.push(special[Math.floor(Math.random()*special.length)]);
+    myPassword.push(special[Math.floor(Math.random()*(special.length + 1))]);
     i++
     }}}
 
