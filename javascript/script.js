@@ -8,7 +8,7 @@ function writePassword() {
   // Select password from the DOM 
   var passwordText = document.querySelector("#password");
   // Setting the value of password to equal the password array, also converting the array into a string 
-  passwordText.value = myArray.join("");
+  passwordText.value = myPassword.join("");
 }
 
 
@@ -20,7 +20,7 @@ var upper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N
 var num = [0,1,2,3,4,5,6,7,8,9]
 // Setting an array containing all special characters
 var special = [ "!", "#" , "$" , "%" , "&" , "'" , "(" , ")" , "*" , "+" , "-", ".", "/", ":", ";", "<",  "=" , ">", "?", "@" , "[" ,"]", "^" , "_" ,"`", "{" , "|" , "}" ,"~", "\\"]
-var myArray = []
+var myPassword = []
 
 // The BIG function that will generate password when button is clicked, and paste the password to the box
 function generatePassword(){
@@ -33,14 +33,15 @@ function generatePassword(){
       // generate password
       randomPass();
       // randomize password
-      randomizePass(myArray);
+      randomizePass(myPassword);
+      console.log("This will display the password array before it is reset");
+      console.log(myPassword)
       // insert password into password container
       writePassword();
       // alert the users the password
-      alert("Your password is " + myArray.join(""));
+      alert("Your password is " + myPassword.join(""));
       // reset the password so if they click generate again, it wills start from scratch
       arrayReset();
-      // console.log(myArray)
   }
   // if the user makes a mistake when choosing password length, alert them and ask them again
   else{
@@ -51,7 +52,7 @@ function generatePassword(){
 
 //reset the array to an empty so the next time it generate password, it will not contain the previous generated password
 function arrayReset(){
-  myArray = [];
+  myPassword = [];
 }
 
 
@@ -68,40 +69,40 @@ function randomPass(){
     for( var i = 0; i < characterCountInNumber;){
     //if all four criteria are true
     if(isLower && i < characterCountInNumber){ 
-    myArray.push(lower[Math.floor(Math.random()*lower.length)]);
+    myPassword.push(lower[Math.floor(Math.random()*lower.length)]);
     i++;
     if (isUpper && i < characterCountInNumber){
-    myArray.push(upper[Math.floor(Math.random()*upper.length)]);
+    myPassword.push(upper[Math.floor(Math.random()*upper.length)]);
     i++};
     if (isNumber && i < characterCountInNumber){
-    myArray.push(num[Math.floor(Math.random()*num.length)]);
+    myPassword.push(num[Math.floor(Math.random()*num.length)]);
     i++};
     if (isSpecial && i < characterCountInNumber){
-    myArray.push(special[Math.floor(Math.random()*special.length)]);
+    myPassword.push(special[Math.floor(Math.random()*special.length)]);
     i++};
     }
     //if the 1 criteria are false, check the other three
     else if (isUpper && i < characterCountInNumber){
-    myArray.push(upper[Math.floor(Math.random()*upper.length)]);
+    myPassword.push(upper[Math.floor(Math.random()*upper.length)]);
     i++;
     if (isNumber && i < characterCountInNumber){
-    myArray.push(num[Math.floor(Math.random()*num.length)]);
+    myPassword.push(num[Math.floor(Math.random()*num.length)]);
     i++};
     if (isSpecial && i < characterCountInNumber){
-    myArray.push(special[Math.floor(Math.random()*special.length)]);
+    myPassword.push(special[Math.floor(Math.random()*special.length)]);
     i++}
     }
     //if the first two criteria are false, check the last two criteria
     else if (isNumber && i < characterCountInNumber){
-    myArray.push(num[Math.floor(Math.random()*num.length)]);
+    myPassword.push(num[Math.floor(Math.random()*num.length)]);
     i++;
     if (isSpecial && i < characterCountInNumber){
-    myArray.push(special[Math.floor(Math.random()*special.length)]);
+    myPassword.push(special[Math.floor(Math.random()*special.length)]);
     i++}
     }
     //if the first three criteria are false, then only the last one is true
     else if (isSpecial && i < characterCountInNumber){
-    myArray.push(special[Math.floor(Math.random()*special.length)]);
+    myPassword.push(special[Math.floor(Math.random()*special.length)]);
     i++
     }}}
 
@@ -116,7 +117,7 @@ function randomPass(){
 function randomizePass (a){
   var newIndex;
   var newValue;
-  for(var z = myArray.length -1; z >0 ; z--){
+  for(var z = myPassword.length -1; z >0 ; z--){
   newIndex = Math.floor(Math.random()*(z + 1));
   newValue = a[z];
   a[z] = a[newIndex];
