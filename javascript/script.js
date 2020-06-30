@@ -49,6 +49,13 @@ function generatePassword(){
   }
 }
 
+//reset the array to an empty so the next time it generate password, it will not contain the previous generated password
+function arrayReset(){
+  myArray = [];
+}
+
+
+
 // Password generator function
 function randomPass(){
   // confirm if user want lowercase, uppercase, number or special characters in their password
@@ -57,221 +64,62 @@ function randomPass(){
   var isNumber = confirm("Do you want number in your password?\n Hit OK for Yes and CANCEL for No");
   var isSpecial = confirm("Do you want special characters in your password?\n Hit OK for Yes and CANCEL for No"); 
   // if function based on the answer of user
-  if (isLower === true && isUpper === true && isNumber === true && isSpecial === true){
-    allTrue()
-  }
-  else if(isLower === false && isUpper === false && isNumber === false && isSpecial === false){
+  if(isLower === true || isUpper ===true || isNumber === true || isSpecial && true){ 
+    for( var i = 0; i < characterCountInNumber;){
+    //if all four criteria are true
+    if(isLower && i < characterCountInNumber){ 
+    myArray.push(lower[Math.floor(Math.random()*lower.length)]);
+    i++;
+    if (isUpper && i < characterCountInNumber){
+    myArray.push(upper[Math.floor(Math.random()*upper.length)]);
+    i++};
+    if (isNumber && i < characterCountInNumber){
+    myArray.push(num[Math.floor(Math.random()*num.length)]);
+    i++};
+    if (isSpecial && i < characterCountInNumber){
+    myArray.push(special[Math.floor(Math.random()*special.length)]);
+    i++};
+    }
+    //if the 1 criteria are false, check the other three
+    else if (isUpper && i < characterCountInNumber){
+    myArray.push(upper[Math.floor(Math.random()*upper.length)]);
+    i++;
+    if (isNumber && i < characterCountInNumber){
+    myArray.push(num[Math.floor(Math.random()*num.length)]);
+    i++};
+    if (isSpecial && i < characterCountInNumber){
+    myArray.push(special[Math.floor(Math.random()*special.length)]);
+    i++}
+    }
+    //if the first two criteria are false, check the last two criteria
+    else if (isNumber && i < characterCountInNumber){
+    myArray.push(num[Math.floor(Math.random()*num.length)]);
+    i++;
+    if (isSpecial && i < characterCountInNumber){
+    myArray.push(special[Math.floor(Math.random()*special.length)]);
+    i++}
+    }
+    //if the first three criteria are false, then only the last one is true
+    else if (isSpecial && i < characterCountInNumber){
+    myArray.push(special[Math.floor(Math.random()*special.length)]);
+    i++
+    }}}
+
+  //if user accidentally didn't choose any criteria for their password, warn them to choose at least 1
+    else if(isLower === false && isUpper === false && isNumber === false && isSpecial === false){
     alert("Please choose AT LEAST 1 criteria for your password");
     randomPass()
-  }
-  else if(isLower === true && isUpper === true && isNumber === true){
-    LUN()
-  }
-  else if(isUpper === true && isNumber === true && isSpecial === true){
-    UNS()
-  }
-  else if(isLower === true && isNumber === true && isSpecial === true){
-    LNS()
-  }
-  else if(isLower === true && isUpper === true && isSpecial === true){
-    LUS()
-  }
-  else if(isLower === true && isUpper === true){
-    LU()
-  }
-  else if(isNumber === true && isSpecial === true){
-    NS()
-  }
-  else if(isLower === true && isNumber === true){
-    LN()
-  }
-  else if(isUpper === true && isSpecial === true){
-    US()
-  }
-  else if(isLower === true && isSpecial === true){
-    LS()
-  }
-  else if(isUpper === true && isNumber === true){
-    UN()
-  }
-  //if user only choose one criteria out of four
-  else{
-    for( var i = 0; i < characterCountInNumber; i++){
-      if(isUpper){
-      myArray.push(upper[Math.floor(Math.random()*upper.length)]);
-      i++
-      }
-      else if(isLower){
-      myArray.push(lower[Math.floor(Math.random()*lower.length)]);
-      i++
-      }
-      else if(isSpecial){
-      myArray.push(special[Math.floor(Math.random()*special.length)]);
-      i++
-      }
-      else{
-      myArray.push(number[Math.floor(Math.random()*number.length)]);
-      i++;
-    }
-  }
-}}
+  }}
 
-
-//if user choose uppercase, number and special character
-function UNS(){
-  var i = 0;
-  while( i < characterCountInNumber){
-  myArray.push(special[Math.floor(Math.random()*special.length)]);
-  i++;
-  if (i < characterCountInNumber){
-  myArray.push(upper[Math.floor(Math.random()*upper.length)]);
-  i++;
-  if (i < characterCountInNumber){
-  myArray.push(num[Math.floor(Math.random()*num.length)]);
-  i++;
-}}}}
-
-//if user choose lowercase, number and special character
-function LNS(){
-  var i = 0;
-  while( i < characterCountInNumber){
-    myArray.push(special[Math.floor(Math.random()*special.length)]);
-    i++;
-    if (i < characterCountInNumber){
-    myArray.push(lower[Math.floor(Math.random()*lower.length)]);
-    i++;
-    if (i < characterCountInNumber){
-    myArray.push(num[Math.floor(Math.random()*num.length)]);
-    i++;
-}}}}
-
-// if user choose lowercase, uppercase and special charactes
-function LUS(){
-  var i = 0;
-  while( i < characterCountInNumber){
-    myArray.push(special[Math.floor(Math.random()*special.length)]);
-    i++;
-    if (i < characterCountInNumber){
-    myArray.push(lower[Math.floor(Math.random()*lower.length)]);
-    i++;
-    if (i < characterCountInNumber){
-    myArray.push(upper[Math.floor(Math.random()*upper.length)]);
-    i++;
-}}}}
-
-// if user choose lowercase and uppercase
-function LU(){
-  var i = 0;
-  while( i < characterCountInNumber){
-    myArray.push(lower[Math.floor(Math.random()*lower.length)]);
-    i++;
-    if (i < characterCountInNumber){
-    myArray.push(upper[Math.floor(Math.random()*upper.length)]);
-    i++;
-}}}
-
-// if user choose number and sepcial characters
-function NS(){
-  var i = 0;
-  while( i < characterCountInNumber){
-    myArray.push(special[Math.floor(Math.random()*special.length)]);
-    i++;
-    if (i < characterCountInNumber){
-    myArray.push(num[Math.floor(Math.random()*num.length)]);
-    i++;
-}}}
-
-// if user choose lowercase and number
-function LN(){
-  var i = 0;
-  while( i < characterCountInNumber){
-    myArray.push(num[Math.floor(Math.random()*num.length)]);
-    i++;
-    if (i < characterCountInNumber){
-    myArray.push(lower[Math.floor(Math.random()*lower.length)]);
-    i++;
-}}}
-
-// if user choose uppercase and special character
-function US(){
-  var i = 0;
-  while( i < characterCountInNumber){
-    myArray.push(special[Math.floor(Math.random()*special.length)]);
-    i++;
-    if (i < characterCountInNumber){
-    myArray.push(upper[Math.floor(Math.random()*upper.length)]);
-    i++;
-}}}
-
-// if user choose lowercase and special character
-function LS(){
-  var i = 0;
-  while( i < characterCountInNumber){
-    myArray.push(special[Math.floor(Math.random()*special.length)]);
-    i++;
-    if (i < characterCountInNumber){
-    myArray.push(lower[Math.floor(Math.random()*lower.length)]);
-    i++;
-}}}
-
-// if user choose uppercase and number ]
-function UN(){
-  var i = 0;
-  while( i < characterCountInNumber){
-    myArray.push(upper[Math.floor(Math.random()*upper.length)]);
-    i++;
-    if (i < characterCountInNumber){
-    myArray.push(num[Math.floor(Math.random()*num.length)]);
-    i++;
-}}}
-
-// if user choose lowercase, uppercase, and number 
-function LUN(){
-  var i = 0;
-  while( i < characterCountInNumber){
-  myArray.push(lower[Math.floor(Math.random()*lower.length)]);
-  i++;
-  if (i < characterCountInNumber){
-  myArray.push(upper[Math.floor(Math.random()*upper.length)]);
-  i++;
-  if (i < characterCountInNumber){
-  myArray.push(num[Math.floor(Math.random()*num.length)]);
-  i++;
-}}}}
-
-
-// If user choose all four criteria
-function allTrue(){
-  var i = 0;
-  while( i < characterCountInNumber){
-  myArray.push(lower[Math.floor(Math.random()*lower.length)]);
-  i++;
-  if (i < characterCountInNumber){
-  myArray.push(upper[Math.floor(Math.random()*upper.length)]);
-  i++;
-  if (i < characterCountInNumber){
-  myArray.push(special[Math.floor(Math.random()*special.length)]);
-  i++;
-  if (i < characterCountInNumber){
-  myArray.push(num[Math.floor(Math.random()*num.length)]);
-  i++;
-}}}}
-
-}
-
-//reset the array to an empty so the next time it generate password, it will not contain the previous generated password
-function arrayReset(){
-  myArray = [];
-}
 
 //Randomize the order of the password generated so it is more secure
 function randomizePass (a){
   var newIndex;
   var newValue;
-  for(var i = myArray.length -1; i >0 ; i--){
-  newIndex = Math.floor(Math.random()*(i + 1));
-  newValue = a[i];
-  a[i] = a[newIndex];
+  for(var z = myArray.length -1; z >0 ; z--){
+  newIndex = Math.floor(Math.random()*(z + 1));
+  newValue = a[z];
+  a[z] = a[newIndex];
   a[newIndex] = newValue;
   }
 }
