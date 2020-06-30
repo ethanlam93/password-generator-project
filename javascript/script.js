@@ -32,7 +32,9 @@ function generatePassword(){
   if(characterCountInNumber >=8 && characterCountInNumber <=128 ){
       // generate password
       randomPass();
-      // insert password into password contaniner
+      // randomize password
+      randomizePass(myArray);
+      // insert password into password container
       writePassword();
       // alert the users the password
       alert("Your password is " + myArray.join(""));
@@ -50,17 +52,13 @@ function generatePassword(){
 // Password generator function
 function randomPass(){
   // confirm if user want lowercase, uppercase, number or special characters in their password
-  var isLower = confirm("Do you want lower case in your password?");
-  var isUpper = confirm("Do you want UPPER case in your password?");
-  var isNumber = confirm("Do you want number in your password?");
-  var isSpecial = confirm("Do you want special characters in your password?"); 
+  var isLower = confirm("Do you want lower case in your password?\n Hit OK for Yes and CANCEL for No");
+  var isUpper = confirm("Do you want UPPER case in your password?\n Hit OK for Yes and CANCEL for No");
+  var isNumber = confirm("Do you want number in your password?\n Hit OK for Yes and CANCEL for No");
+  var isSpecial = confirm("Do you want special characters in your password?\n Hit OK for Yes and CANCEL for No"); 
   // if function based on the answer of user
   if (isLower === true && isUpper === true && isNumber === true && isSpecial === true){
     allTrue()
-  }
-  else if(isLower === false && isUpper === false && isNumber === false && isSpecial === false){
-    alert("Please choose at least one criteria! I forgive you this time");
-    randomPass()
   }
   else if(isLower === true && isUpper === true && isNumber === true){
     LUN()
@@ -262,6 +260,19 @@ function arrayReset(){
   myArray = [];
 }
 
+//Randomize the order of the password generated so it is more secure
+function randomizePass (a){
+  var newIndex;
+  var newValue;
+  for(var i = myArray.length -1; i >0 ; i--){
+  newIndex = Math.floor(Math.random()*(i + 1));
+  newValue = a[i];
+  a[i] = a[newIndex];
+  a[newIndex] = newValue;
+  }
+}
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", generatePassword)
+
+
