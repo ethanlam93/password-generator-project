@@ -24,3 +24,7 @@ Create an application that generates a random password based on user-selected cr
 <h2>Details</h2>
 <br>
 The CSS for this project is very straightforward until the function. In order to create an random password. I first created 4 array containing all the characters the password can contain. Next, I created an empty password array. Then I combine the IF function and the FOR LOOP to copy and paste each item of the 4 stock arrays into the empty password array i created. Once the password array reached the desire length that user choose, the loop will stop, returning an array containing my password. Then I use a function to randomize the order of the just created password by swapping their index. To display the newly crafted password in a regular password format, I convert the password array into a string and add it to the password container's value. Everytime you click on the "generate password" button, it will re-run the function and give you a new passowrd.
+
+
+My Github Repo: https://github.com/ethanlam93<br>
+Deployment: https://ethanlam93.github.io/password-generator-project/
